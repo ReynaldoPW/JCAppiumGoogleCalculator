@@ -12,10 +12,18 @@ public class GoogleCalculatorTest {
     public static void main(String[] args) throws MalformedURLException {
 
         DesiredCapabilities caps = new DesiredCapabilities();
+        //Asus X00TD
+//        caps.setCapability(MobileCapabilityType.PLATFORM_NAME,"Android");
+//        caps.setCapability(MobileCapabilityType.UDID,"J8AXGF01D5147RP");
+//        caps.setCapability(MobileCapabilityType.VERSION,"9");
+//        caps.setCapability(MobileCapabilityType.DEVICE_NAME,"ASUS X00TD");
+//        caps.setCapability("appPackage","com.google.android.calculator");
+//        caps.setCapability("appActivity","com.android.calculator2.Calculator");
+        //Emulator Pixel 2
         caps.setCapability(MobileCapabilityType.PLATFORM_NAME,"Android");
-        caps.setCapability(MobileCapabilityType.UDID,"J8AXGF01D5147RP");
-        caps.setCapability(MobileCapabilityType.VERSION,"9");
-        caps.setCapability(MobileCapabilityType.DEVICE_NAME,"ASUS X00TD");
+        caps.setCapability(MobileCapabilityType.UDID,"emulator-5554");
+        caps.setCapability(MobileCapabilityType.VERSION,"11");
+        caps.setCapability(MobileCapabilityType.DEVICE_NAME,"sdk gphone_x86");
         caps.setCapability("appPackage","com.google.android.calculator");
         caps.setCapability("appActivity","com.android.calculator2.Calculator");
 
@@ -26,8 +34,11 @@ public class GoogleCalculatorTest {
         MobileElement btn1 = driver.findElementById("com.google.android.calculator:id/digit_1");
         MobileElement btn2 = driver.findElementById("com.google.android.calculator:id/digit_2");
         MobileElement btn3 = driver.findElementById("com.google.android.calculator:id/digit_3");
-        MobileElement btnPlus =driver.findElementByAccessibilityId("tambah");
-        MobileElement btnEquals = driver.findElementByAccessibilityId("sama dengan");
+        MobileElement btnPlus =driver.findElementByAccessibilityId("plus");
+        MobileElement btnEquals = driver.findElementByAccessibilityId("equals");
+        //setting Asus X00TD
+//        MobileElement btnPlus =driver.findElementByAccessibilityId("tambah");
+//        MobileElement btnEquals = driver.findElementByAccessibilityId("sama dengan");
 
         btn1.click();
         btnPlus.click();
@@ -36,13 +47,15 @@ public class GoogleCalculatorTest {
 
         String result =driver.findElementById("com.google.android.calculator:id/result_final").getText();
         if(result.equals("3")){
-            System.out.println("Addition Test Passed");
+            System.out.println("Addition Test Passed result is: "+result);
         }else {
             System.out.println("Addition Test Failed");
         }
 
         //perform multiplication operation
-        MobileElement btnMultiply = driver.findElementByAccessibilityId("kali");
+        MobileElement btnMultiply = driver.findElementByAccessibilityId("multiply");
+        //setting Asus X00TD
+//        MobileElement btnMultiply = driver.findElementByAccessibilityId("kali");
         MobileElement btn4 = driver.findElementById("com.google.android.calculator:id/digit_4");
 
         btn3.click();
@@ -52,7 +65,7 @@ public class GoogleCalculatorTest {
 
         result = driver.findElementById("com.google.android.calculator:id/result_final").getText();
         if(result.equals("12")){
-            System.out.println("Multiplication Test Passed");
+            System.out.println("Multiplication Test Passed result is: "+result);
         }else {
             System.out.println("Multiplication Test Failed");
         }
